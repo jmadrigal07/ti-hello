@@ -7,11 +7,11 @@ spec:
   replicas: 2
   selector:
     matchLabels:
-      name: prueba-gha
+      name: ti-hello
   template:
     metadata:
       labels:
-        name: prueba-gha
+        name: ti-hello
     spec:
       containers:
       - name: ti-hello
