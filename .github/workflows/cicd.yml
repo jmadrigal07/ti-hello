@@ -1,28 +1,4 @@
-on: push
-name: deploy
-
-jobs:
-  build-and-push:
-    runs-on: ubuntu-latest
-    steps:
-    - uses: actions/checkout@v2
-    - uses: diogohudson/build_docker_2_ecr_eks@v1
-      with:
-        access_key_id: ${{ secrets.AWS_ACCESS_KEY_ID }}
-        secret_access_key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
-        account_id: ${{ secrets.AWS_ACCOUNT_ID }}
-        repo: 815828733977.dkr.ecr.us-east-1.amazonaws.com/ti-hello
-        region: us-east-1
-        tags: latest,${{ github.sha }}
-        create_repo: true
-        image_scanning_configuration: true
-        set_repo_policy: false
-        # repo_policy_file: repo-policy.json
-        cluster_name: eks
-        kubectl_command: deploy -f .kustomize/deployment.yaml
-
-
-name: Docker Image CI
+name: CICD Process
 
 on:
   push:
