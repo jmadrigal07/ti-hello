@@ -1,0 +1,21 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  labels:
+  name: ti-hello
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      name: prueba-gha
+  template:
+    metadata:
+      labels:
+        name: prueba-gha
+    spec:
+      containers:
+      - name: ti-hello
+        image: jmadrigal/ti-hello
+        ports:
+        - containerPort: 5051
+          name: http
